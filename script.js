@@ -1,3 +1,4 @@
+
 let appId = 'c9b7c03facc23bdd29977382b34dfc13';
 let units = 'celsius'; // other option is metric
 let searchMethod; // q means searching as a string.
@@ -18,6 +19,13 @@ function searchWeather(searchTerm) {
             init(res);
     });
 }
+
+$(document).ready(function(){
+    $('#searchInput').keypress(function(e){
+      if(e.keyCode==13)
+      $('#searchBtn').click();
+    });
+});
 
 function init(resultFromServer) {
     switch (resultFromServer.weather[0].main) {
