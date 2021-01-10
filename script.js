@@ -1,3 +1,9 @@
+$(document).ready(function(){
+    $('#searchInput').keypress(function(e){
+      if(e.keyCode==13)
+      $('#searchBtn').click();
+    });
+});
 
 let appId = 'c9b7c03facc23bdd29977382b34dfc13';
 let units = 'celsius'; // other option is metric
@@ -14,20 +20,18 @@ function searchWeather(searchTerm) {
     getSearchMethod(searchTerm);
     fetch(`http://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`)
         .then((result) => {
+            console.log(result);
             return result.json();
         }).then((res) => {
+            console.log(res);
             init(res);
     });
 }
 
-$(document).ready(function(){
-    $('#searchInput').keypress(function(e){
-      if(e.keyCode==13)
-      $('#searchBtn').click();
-    });
-});
-
 function init(resultFromServer) {
+    if(!resultFromServer.name){
+        window.alert(resultFromServer.message);
+    }
     switch (resultFromServer.weather[0].main) {
         case 'Clear':
             document.body.style.backgroundImage = "url('img/clear.jpg')";
@@ -70,7 +74,7 @@ function init(resultFromServer) {
     windSpeedElement.innerHTML = 'Winds at  ' + Math.floor(resultFromServer.wind.speed) + ' m/s';
     cityHeader.innerHTML = resultFromServer.name;
     humidityElement.innerHTML = 'Humidity levels at ' + resultFromServer.main.humidity +  '%';
-
+    
     setPositionForWeatherInfo();
 }
 
