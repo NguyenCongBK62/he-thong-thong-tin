@@ -1,11 +1,14 @@
 <html>
 
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Project-HTTT</title>
+</head>
 
-    <body>
+<body>
+    <div class="container">
         <div id="searchContainer">
             <input class="searchControl" type="text" placeholder="City Name or Zipcode" id="searchInput">
             <button class="searchControl" id="searchBtn">Search</button>
@@ -23,6 +26,48 @@
                 <div id="humidity" class="bottom-details"></div>
             </div>
         </div>
-        <script src="script.js" ></script>
-    </body>
+
+        <div class="container">
+            <h2>Change the page brightness and contrast</h2>
+        </div>
+
+        <div class="range-slide">
+            <div class="box">
+                <p>Brightness</p>
+                <div class="range">
+                    <i class="fa fa-sun-o" aria-hidden="true"></i>
+                    <input class="input" type="range" id="bright" min="0" max="200" value="100">
+                    <span class="value">100</span>
+                </div>
+            </div>
+            <div class="box">
+                <p>Contrast</p>
+                <div class="range">
+                    <i class="fa fa-adjust" aria-hidden="true"></i>
+                    <input class="input" type="range" id="contrast" min="0" max="200" value="100">
+                    <span class="value">100</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const rangeInput = document.querySelectorAll(".input");
+        const value = document.querySelectorAll('.value');
+
+        for (let i = 0; i < rangeInput.length; i++) {
+            value[i].textContent = rangeInput[i].value;
+            rangeInput[i].addEventListener("input", () => {
+                value[i].textContent = rangeInput[i].value;
+                if (rangeInput[i].id === "bright") {
+                    document.body.style.filter = `brightness(${rangeInput[i].value}%)`;
+                }
+                if (rangeInput[i].id === "contrast") {
+                    document.body.style.filter = `contrast(${rangeInput[i].value}%)`;
+                }
+            })
+        }
+    </script>
+</body>
+
 </html>

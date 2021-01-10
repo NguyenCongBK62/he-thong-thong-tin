@@ -96,3 +96,4 @@ document.getElementById('searchBtn').addEventListener('click', () => {
 // SNOW https://www.pexels.com/photo/abstract-art-background-blue-sky-289649/
 // CLEAR https://www.pexels.com/photo/blue-sky-blur-clear-sky-color-281260/
 // STORM https://www.pexels.com/photo/white-lightning-heating-mountain-53459/
+

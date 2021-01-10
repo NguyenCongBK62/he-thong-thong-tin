@@ -62,3 +62,22 @@ body {
 hr {
     margin-bottom: 20px;
 }
+
+.range-slide .box{
+    width: 20%;
+    height: 10%;
+    background: #333333;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #0005;
+}
+
+.box .range{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.range .input{
+    width: 60%;
+    margin: 0 10px;
+}
