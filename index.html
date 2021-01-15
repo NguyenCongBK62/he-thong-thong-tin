@@ -8,7 +8,6 @@
 </head>
 
 <body>
-    <div class="container">
         <div id="searchContainer">
             <input class="searchControl" type="text" placeholder="City Name or Zipcode" id="searchInput" required>
             <button class="searchControl" id="searchBtn">Search</button>
@@ -49,21 +48,21 @@
                 </div>
             </div>
         </div>
-    </div>
     <script src="script.js"></script>
     <script>
         const rangeInput = document.querySelectorAll(".input");
         const value = document.querySelectorAll('.value');
+        const check = document.querySelector('#weatherContainer');
 
         for (let i = 0; i < rangeInput.length; i++) {
             value[i].textContent = rangeInput[i].value;
             rangeInput[i].addEventListener("input", () => {
                 value[i].textContent = rangeInput[i].value;
                 if (rangeInput[i].id === "bright") {
-                    document.body.style.filter = `brightness(${rangeInput[i].value}%)`;
+                    check.style.filter = `brightness(${rangeInput[i].value}%)`;
                 }
                 if (rangeInput[i].id === "contrast") {
-                    document.body.style.filter = `contrast(${rangeInput[i].value}%)`;
+                    check.style.filter = `contrast(${rangeInput[i].value}%)`;
                 }
             })
         }

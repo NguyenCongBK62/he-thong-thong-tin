@@ -25,7 +25,9 @@ function searchWeather(searchTerm) {
         }).then((res) => {
             console.log(res);
             init(res);
-    });
+        }).catch((error) => {
+            window.alert("cannot get api");
+        })
 }
 
 function init(resultFromServer) {
